@@ -1,0 +1,5 @@
+node_modules/
+packages/**/*.d.ts
+.github/
+coverage/
+jest.config.js

@@ -1,0 +1,47 @@
+{
+  "name": "remark-custom-heading-id",
+  "version": "1.0.0",
+  "description": "remark plugin to support Markdown Extension for custom heading IDs",
+  "license": "MIT",
+  "keywords": [
+    "unified",
+    "remark",
+    "remark-plugin",
+    "plugin",
+    "mdast",
+    "markdown",
+    "heading",
+    "heading-id"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eyas/md-heading-id",
+    "directory": "packages/remark-custom-heading-id"
+  },
+  "bugs": "https://github.com/Eyas/md-heading-id/issues",
+  "author": "Eyas Sharaiha <npm@eyas.sh> (https://eyas.sh)",
+  "type": "module",
+  "sideEffects": false,
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "mdast-heading-id": "*",
+    "micromark-heading-id": "*",
+    "unist-util-visit": "^4.1.0"
+  },
+  "devDependencies": {
+    "rehype-stringify": "^9.0.3",
+    "remark": "^14.0.2",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.1"
+  },
+  "scripts": {
+    "prepack": "npm run build",
+    "build": "rimraf test/**/*.d.ts *.d.ts && tsc",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+  }
+}

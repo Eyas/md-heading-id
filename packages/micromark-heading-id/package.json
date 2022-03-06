@@ -1,0 +1,39 @@
+{
+  "name": "micromark-heading-id",
+  "version": "1.0.0",
+  "description": "micromark extension to support Markdown Extension for custom heading IDs",
+  "license": "MIT",
+  "keywords": [
+    "unified",
+    "micromark",
+    "extension",
+    "markdown",
+    "heading",
+    "heading-id"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eyas/md-heading-id",
+    "directory": "packages/micromark-heading-id"
+  },
+  "bugs": "https://github.com/Eyas/md-heading-id/issues",
+  "author": "Eyas Sharaiha <npm@eyas.sh> (https://eyas.sh)",
+  "type": "module",
+  "sideEffects": false,
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "micromark-util-symbol": "^1.0.1"
+  },
+  "scripts": {
+    "prepack": "npm run build",
+    "build": "rimraf test/**/*.d.ts *.d.ts && tsc"
+  },
+  "devDependencies": {
+    "micromark-util-types": "^1.0.2"
+  }
+}

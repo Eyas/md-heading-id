@@ -1,0 +1,42 @@
+{
+  "name": "monorepo",
+  "private": "true",
+  "author": {
+    "name": "Eyas Sharaiha",
+    "email": "npm@eyas.sh",
+    "url": "https://eyas.sh"
+  },
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=7.0.0"
+  },
+  "engineStrict": true,
+  "bugs": "https://github.com/Eyas/md-heading-id/issues",
+  "repository": "github:Eyas/md-heading-id",
+  "devDependencies": {
+    "@jest/globals": "^27.5.1",
+    "@types/jest": "^27.4.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.4.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.2"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "lint:prettier": "prettier --check .",
+    "lint:eslint": "npm run lint:eslint --workspaces --if-present --",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "fix:prettier": "prettier --write .",
+    "fix:eslint": "npm run lint:eslint -- --fix ",
+    "fix": "npm run fix:eslint && npm run fix:prettier",
+    "test": "npm run lint && npm run test --workspaces"
+  }
+}

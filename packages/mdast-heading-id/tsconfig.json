@@ -1,0 +1,4 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["__tests__/**/*.js", "*.js", "tree-extension.d.ts"]
+}

@@ -1,0 +1,4 @@
+node_modules/
+jest.config.js
+packages/**/*.d.ts
+coverage/
