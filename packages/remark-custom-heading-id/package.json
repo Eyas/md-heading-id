@@ -36,6 +36,7 @@
   "devDependencies": {
     "rehype-stringify": "^9.0.3",
     "remark": "^14.0.2",
+    "remark-mdx": "^2.0.0",
     "remark-rehype": "^10.1.0",
     "unified": "^10.1.1"
   },
@@ -43,5 +44,8 @@
     "prepack": "npm run build",
     "build": "rimraf test/**/*.d.ts *.d.ts && tsc",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+  },
+  "jest": {
+    "testRegex": "/__tests__/.*\\.js$"
   }
 }

@@ -47,6 +47,14 @@ export function remarkHeadingId() {
           idNode.value;
 
         idNode.value = '';
+        const nodeIndex = node.children.indexOf(idNode);
+        if (nodeIndex >= 1) {
+          const previous = node.children[nodeIndex - 1];
+          if (previous.type === 'text') {
+            previous.value = previous.value.trimEnd();
+          }
+        }
+        node.children.splice(nodeIndex, 1);
       }
     });
   };

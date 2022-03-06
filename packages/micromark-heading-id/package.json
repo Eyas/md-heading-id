@@ -29,11 +29,16 @@
   "dependencies": {
     "micromark-util-symbol": "^1.0.1"
   },
+  "devDependencies": {
+    "micromark": "^3.0.10",
+    "micromark-util-types": "^1.0.2"
+  },
   "scripts": {
     "prepack": "npm run build",
-    "build": "rimraf test/**/*.d.ts *.d.ts && tsc"
+    "build": "rimraf test/**/*.d.ts *.d.ts && tsc",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },
-  "devDependencies": {
-    "micromark-util-types": "^1.0.2"
+  "jest": {
+    "testRegex": "/__tests__/.*\\.js$"
   }
 }
