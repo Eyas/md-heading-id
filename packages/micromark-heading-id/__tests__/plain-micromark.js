@@ -78,18 +78,61 @@ Text.
     `);
   });
 
-  // TODO: Fix this.
-  //   it('gracefully aborts with missing hash', () => {
-  //     const result = micromark(
-  //       `
-  // # regular heading
-  // # with id {not-id}
-  // # with another {alsonotid}
-  // Text.
-  //     `,
-  //       {extensions: [micromarkHeadingId()]}
-  //     );
+  it('ignores escaped opening brace', () => {
+    const result = micromark(
+      `# escaped \\{#not-id}
+Foo.
+      `,
+      {
+        extensions: [micromarkHeadingId()],
+        htmlExtensions: [inspectSyntaxHtmlExtension],
+      }
+    );
 
-  //     expect(result).toMatchInlineSnapshot();
-  //   });
+    expect(result).toMatchInlineSnapshot(`
+      "<h1>escaped {#not-id}</h1>
+      <p>Foo.</p>
+      "
+    `);
+  });
+
+  it('gracefully aborts with missing hash', () => {
+    const result = micromark(
+      `
+# regular heading
+# with id {not-id}
+# with another {alsonotid}
+Text.
+      `,
+      {
+        extensions: [micromarkHeadingId()],
+        htmlExtensions: [inspectSyntaxHtmlExtension],
+      }
+    );
+
+    expect(result).toMatchInlineSnapshot(`
+      "<h1>regular heading</h1>
+      <h1>with id {not-id}</h1>
+      <h1>with another {alsonotid}</h1>
+      <p>Text.</p>
+      "
+    `);
+  });
+
+  it('gracefully aborts with unmatched paren', () => {
+    const result = micromark(
+      `
+# with id {#no
+      `,
+      {
+        extensions: [micromarkHeadingId()],
+        htmlExtensions: [inspectSyntaxHtmlExtension],
+      }
+    );
+
+    expect(result).toMatchInlineSnapshot(`
+      "<h1>with id {#no</h1>
+      "
+    `);
+  });
 });

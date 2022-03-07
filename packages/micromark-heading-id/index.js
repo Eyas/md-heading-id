@@ -73,7 +73,8 @@ export function micromarkHeadingId() {
                   }
                 },
               },
-              ok
+              ok,
+              nok
             )(code);
           }
         },
