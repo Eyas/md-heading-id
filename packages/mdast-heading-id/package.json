@@ -30,7 +30,8 @@
   "devDependencies": {
     "@types/mdast": "^3.0.10",
     "@types/unist": "^2.0.6",
-    "mdast-util-from-markdown": "^1.2.0"
+    "mdast-util-from-markdown": "^1.2.0",
+    "micromark-heading-id": "*"
   },
   "scripts": {
     "prepack": "npm run build",
