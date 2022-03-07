@@ -8,7 +8,9 @@
   },
   "license": "MIT",
   "workspaces": [
-    "packages/*"
+    "packages/micromark-heading-id",
+    "packages/mdast-heading-id",
+    "packages/remark-custom-heading-id"
   ],
   "type": "module",
   "engines": {
