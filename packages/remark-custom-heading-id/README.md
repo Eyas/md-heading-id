@@ -21,8 +21,11 @@ import {remark} from 'remark';
 import html from 'remark-rehype';
 import stringify from 'rehype-stringify';
 
-const result = remark().use(remarkHeadingId).use(html).use(stringify)
-      .processSync(`# Hello, world {#hello}`);
+const result = remark()
+  .use(remarkHeadingId)
+  .use(html)
+  .use(stringify)
+  .processSync(`# Hello, world {#hello}`);
 console.log(String(result));
 
 // Outputs:
@@ -42,7 +45,8 @@ const result = remark()
   .use(remarkMdx)
   .use(remarkHeadingId)
   .use(html)
-  .use(stringify).processSync(`# Hello, world {#hello}`);
+  .use(stringify)
+  .processSync(`# Hello, world {#hello}`);
 
 console.log(String(result));
 
@@ -54,13 +58,13 @@ console.log(String(result));
 
 ```js
 import {remarkHeadingId} from 'remark-custom-heading-id';
-import { serialize } from "next-mdx-remote/serialize"; // or similar...
+import {serialize} from 'next-mdx-remote/serialize'; // or similar...
 
 export default async function getMdxProps(source) {
   return await serialize(source, {
     mdxOptions: {
       remarkPlugins: [remarkHeadingId],
-    }
+    },
   });
 }
 ```
