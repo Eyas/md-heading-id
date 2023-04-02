@@ -54,4 +54,27 @@ Paragraph with ID {#someid}
       `)
     ).toThrowError('Found 2 ids');
   });
+
+  it('behaves well with other tags', function () {
+    const contents = remark().use(remarkHeadingId).use(html).use(stringify)
+      .processSync(`
+Just a paragraph.
+
+With some \`code\`.
+
+# Header {#id1}
+
+With descriptions!
+
+# Header with \`code\` {#id2}
+      `);
+
+    expect(String(contents)).toMatchInlineSnapshot(`
+      "<p>Just a paragraph.</p>
+      <p>With some <code>code</code>.</p>
+      <h1 id="id1">Header</h1>
+      <p>With descriptions!</p>
+      <h1 id="id2">Header with <code>code</code></h1>"
+    `);
+  });
 });

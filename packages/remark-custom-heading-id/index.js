@@ -33,9 +33,12 @@ export function remarkHeadingId() {
     });
 
     visit(node, 'heading', node => {
+      const children = getChildren(node);
+      if (!children) return;
+
       const ids =
         /** @type {import("mdast-heading-id/tree-extension").MdIdString[]} */ (
-          (getChildren(node) || []).filter(child => child.type === 'idString')
+          children.filter(child => child.type === 'idString')
         );
 
       if (ids.length == 0) return;
@@ -50,8 +53,6 @@ export function remarkHeadingId() {
           idNode.value;
 
         idNode.value = '';
-        const children = getChildren(node);
-        if (!children) return;
 
         const nodeIndex = children.indexOf(idNode);
         if (nodeIndex >= 1) {
