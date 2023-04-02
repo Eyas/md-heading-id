@@ -6,7 +6,10 @@ import {visit} from 'unist-util-visit';
 import {micromarkHeadingId} from 'micromark-heading-id';
 import {mdastHeadingId} from 'mdast-heading-id';
 
-/** @type {import('unified').Plugin<[], Root>} */
+/**
+ * @type {import('unified').Plugin<[], Root, Root>}
+ * @this {import('unified').Processor<void, Root>}
+ */
 export function remarkHeadingId() {
   const data = this.data();
 
@@ -32,7 +35,7 @@ export function remarkHeadingId() {
     visit(node, 'heading', node => {
       const ids =
         /** @type {import("mdast-heading-id/tree-extension").MdIdString[]} */ (
-          node.children.filter(child => child.type === 'idString')
+          (getChildren(node) || []).filter(child => child.type === 'idString')
         );
 
       if (ids.length == 0) return;
@@ -47,17 +50,31 @@ export function remarkHeadingId() {
           idNode.value;
 
         idNode.value = '';
-        const nodeIndex = node.children.indexOf(idNode);
+        const children = getChildren(node);
+        if (!children) return;
+
+        const nodeIndex = children.indexOf(idNode);
         if (nodeIndex >= 1) {
-          const previous = node.children[nodeIndex - 1];
+          const previous = children[nodeIndex - 1];
           if (previous.type === 'text') {
             previous.value = previous.value.trimEnd();
           }
         }
-        node.children.splice(nodeIndex, 1);
+        children.splice(nodeIndex, 1);
       }
     });
   };
+}
+
+/**
+ * Util to simplify typings.
+ * @param {import('mdast').Content | Root} node Tree
+ */
+function getChildren(node) {
+  if ('children' in node) {
+    return node.children;
+  }
+  return undefined;
 }
 
 export default remarkHeadingId;

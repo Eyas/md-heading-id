@@ -15,10 +15,10 @@ describe('plugin with vanilla remark', function () {
 
     expect(String(contents)).toMatchInlineSnapshot(`
       "<h1>no id</h1>
-      <h1 id=\\"someid\\">regular id</h1>
-      <h1 id=\\"much-longer-id\\">another</h1>
-      <h1 id=\\"with spaces\\">weird</h1>
-      <h1 id=\\"عنوان\\">utf-8</h1>"
+      <h1 id="someid">regular id</h1>
+      <h1 id="much-longer-id">another</h1>
+      <h1 id="with spaces">weird</h1>
+      <h1 id="عنوان">utf-8</h1>"
     `);
   });
 

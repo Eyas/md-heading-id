@@ -10,18 +10,18 @@ describe('mdast plugin', () => {
         mdastExtensions: [mdastHeadingId()],
       })
     ).toMatchInlineSnapshot(`
-      Object {
-        "children": Array [
-          Object {
-            "children": Array [
-              Object {
-                "position": Object {
-                  "end": Object {
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
                     "column": 13,
                     "line": 1,
                     "offset": 12,
                   },
-                  "start": Object {
+                  "start": {
                     "column": 3,
                     "line": 1,
                     "offset": 2,
@@ -30,14 +30,14 @@ describe('mdast plugin', () => {
                 "type": "text",
                 "value": "simple id ",
               },
-              Object {
-                "position": Object {
-                  "end": Object {
+              {
+                "position": {
+                  "end": {
                     "column": 32,
                     "line": 1,
                     "offset": 31,
                   },
-                  "start": Object {
+                  "start": {
                     "column": 15,
                     "line": 1,
                     "offset": 14,
@@ -48,13 +48,13 @@ describe('mdast plugin', () => {
               },
             ],
             "depth": 1,
-            "position": Object {
-              "end": Object {
+            "position": {
+              "end": {
                 "column": 33,
                 "line": 1,
                 "offset": 32,
               },
-              "start": Object {
+              "start": {
                 "column": 1,
                 "line": 1,
                 "offset": 0,
@@ -63,13 +63,13 @@ describe('mdast plugin', () => {
             "type": "heading",
           },
         ],
-        "position": Object {
-          "end": Object {
+        "position": {
+          "end": {
             "column": 33,
             "line": 1,
             "offset": 32,
           },
-          "start": Object {
+          "start": {
             "column": 1,
             "line": 1,
             "offset": 0,

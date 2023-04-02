@@ -19,33 +19,33 @@ describe('plugin with @mdx-js/mdx', () => {
     expect(String(file)).toMatchInlineSnapshot(`
       "/*@jsxRuntime automatic @jsxImportSource react*/
       const {Fragment: _Fragment, jsx: _jsx, jsxs: _jsxs} = arguments[0];
+      function _createMdxContent(props) {
+        const _components = Object.assign({
+          h1: "h1"
+        }, props.components);
+        return _jsxs(_Fragment, {
+          children: [_jsx(_components.h1, {
+            children: "no id"
+          }), "\\n", _jsx(_components.h1, {
+            id: "someid",
+            children: "regular id"
+          }), "\\n", _jsx(_components.h1, {
+            id: "much-longer-id",
+            children: "another"
+          }), "\\n", _jsx(_components.h1, {
+            id: "with spaces",
+            children: "weird"
+          }), "\\n", _jsx(_components.h1, {
+            id: "عنوان",
+            children: "utf-8"
+          })]
+        });
+      }
       function MDXContent(props = {}) {
         const {wrapper: MDXLayout} = props.components || ({});
         return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
-          children: _jsx(_createMdxContent, {})
-        })) : _createMdxContent();
-        function _createMdxContent() {
-          const _components = Object.assign({
-            h1: \\"h1\\"
-          }, props.components);
-          return _jsxs(_Fragment, {
-            children: [_jsx(_components.h1, {
-              children: \\"no id\\"
-            }), \\"\\\\n\\", _jsx(_components.h1, {
-              id: \\"someid\\",
-              children: \\"regular id\\"
-            }), \\"\\\\n\\", _jsx(_components.h1, {
-              id: \\"much-longer-id\\",
-              children: \\"another\\"
-            }), \\"\\\\n\\", _jsx(_components.h1, {
-              id: \\"with spaces\\",
-              children: \\"weird\\"
-            }), \\"\\\\n\\", _jsx(_components.h1, {
-              id: \\"عنوان\\",
-              children: \\"utf-8\\"
-            })]
-          });
-        }
+          children: _jsx(_createMdxContent, props)
+        })) : _createMdxContent(props);
       }
       return {
         default: MDXContent
@@ -68,24 +68,24 @@ describe('plugin with @mdx-js/mdx', () => {
     expect(String(file)).toMatchInlineSnapshot(`
       "/*@jsxRuntime automatic @jsxImportSource react*/
       const {Fragment: _Fragment, jsx: _jsx, jsxs: _jsxs} = arguments[0];
+      function _createMdxContent(props) {
+        const _components = Object.assign({
+          h1: "h1"
+        }, props.components);
+        return _jsxs(_Fragment, {
+          children: [_jsxs(_components.h1, {
+            children: ["no id ", 5 * 3]
+          }), "\\n", _jsxs(_components.h1, {
+            id: "someid",
+            children: ["regular id ", 2 + 2]
+          })]
+        });
+      }
       function MDXContent(props = {}) {
         const {wrapper: MDXLayout} = props.components || ({});
         return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
-          children: _jsx(_createMdxContent, {})
-        })) : _createMdxContent();
-        function _createMdxContent() {
-          const _components = Object.assign({
-            h1: \\"h1\\"
-          }, props.components);
-          return _jsxs(_Fragment, {
-            children: [_jsxs(_components.h1, {
-              children: [\\"no id \\", 5 * 3]
-            }), \\"\\\\n\\", _jsxs(_components.h1, {
-              id: \\"someid\\",
-              children: [\\"regular id \\", 2 + 2]
-            })]
-          });
-        }
+          children: _jsx(_createMdxContent, props)
+        })) : _createMdxContent(props);
       }
       return {
         default: MDXContent
