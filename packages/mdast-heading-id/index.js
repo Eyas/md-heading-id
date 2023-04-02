@@ -24,3 +24,5 @@ export function mdastHeadingId() {
 
   return fromMarkdownExtension;
 }
+
+export default mdastHeadingId;

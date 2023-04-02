@@ -84,3 +84,5 @@ export function micromarkHeadingId() {
 
   return syntaxExtension;
 }
+
+export default micromarkHeadingId;

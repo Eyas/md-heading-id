@@ -59,3 +59,5 @@ export function remarkHeadingId() {
     });
   };
 }
+
+export default remarkHeadingId;
