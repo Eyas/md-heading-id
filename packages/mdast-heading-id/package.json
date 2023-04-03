@@ -1,6 +1,6 @@
 {
   "name": "mdast-heading-id",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "mdast plugin to support Markdown Extension for custom heading IDs",
   "license": "MIT",
   "keywords": [
@@ -21,21 +21,22 @@
   "type": "module",
   "sideEffects": false,
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": "types/index.d.ts",
   "files": [
     "index.js",
-    "index.d.ts",
+    "types/index.d.ts",
     "tree-extensions.d.ts"
   ],
   "devDependencies": {
-    "@types/mdast": "^3.0.10",
+    "@types/mdast": "^3.0.11",
     "@types/unist": "^2.0.6",
-    "mdast-util-from-markdown": "^1.2.0",
+    "mdast-util-from-markdown": "^1.3.0",
     "micromark-heading-id": "*"
   },
   "scripts": {
     "prepack": "npm run build",
-    "build": "rimraf test/**/*.d.ts index.d.ts && tsc",
+    "clean": "rimraf --glob __tests__/**/*.d.ts index.d.ts",
+    "build": "npm run clean && tsc",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },
   "jest": {

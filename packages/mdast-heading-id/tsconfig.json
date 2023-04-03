@@ -1,4 +1,5 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["__tests__/**/*.js", "*.js", "tree-extension.d.ts"]
+  "include": ["__tests__/**/*.js", "*.js", "tree-extension.d.ts"],
+  "compilerOptions": {"outDir": "types/"}
 }
