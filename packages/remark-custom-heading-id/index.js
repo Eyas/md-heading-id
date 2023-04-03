@@ -33,8 +33,7 @@ export function remarkHeadingId() {
     });
 
     visit(node, 'heading', node => {
-      const children = getChildren(node);
-      if (!children) return;
+      const children = /** @type {import('mdast').Heading} */ (node).children;
 
       const ids =
         /** @type {import("mdast-heading-id/tree-extension").MdIdString[]} */ (
@@ -65,17 +64,6 @@ export function remarkHeadingId() {
       }
     });
   };
-}
-
-/**
- * Util to simplify typings.
- * @param {import('mdast').Content | Root} node Tree
- */
-function getChildren(node) {
-  if ('children' in node) {
-    return node.children;
-  }
-  return undefined;
 }
 
 export default remarkHeadingId;
