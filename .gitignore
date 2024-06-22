@@ -1,5 +1,6 @@
 packages/**/*.d.ts
 !packages/mdast-heading-id/tree-extension.d.ts
+!packages/**/ambient.d.ts
 
 # Logs
 logs

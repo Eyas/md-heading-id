@@ -2,6 +2,9 @@ import {remarkHeadingId} from '../index.js';
 import {compile} from '@mdx-js/mdx';
 import {VFile} from 'vfile';
 
+import {jest} from '@jest/globals';
+jest.useFakeTimers();
+
 describe('plugin with @mdx-js/mdx', () => {
   it('should parse well', async () => {
     const file = await compile(
@@ -17,12 +20,13 @@ describe('plugin with @mdx-js/mdx', () => {
     );
 
     expect(String(file)).toMatchInlineSnapshot(`
-      "/*@jsxRuntime automatic @jsxImportSource react*/
+      ""use strict";
       const {Fragment: _Fragment, jsx: _jsx, jsxs: _jsxs} = arguments[0];
       function _createMdxContent(props) {
-        const _components = Object.assign({
-          h1: "h1"
-        }, props.components);
+        const _components = {
+          h1: "h1",
+          ...props.components
+        };
         return _jsxs(_Fragment, {
           children: [_jsx(_components.h1, {
             children: "no id"
@@ -43,9 +47,12 @@ describe('plugin with @mdx-js/mdx', () => {
       }
       function MDXContent(props = {}) {
         const {wrapper: MDXLayout} = props.components || ({});
-        return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
-          children: _jsx(_createMdxContent, props)
-        })) : _createMdxContent(props);
+        return MDXLayout ? _jsx(MDXLayout, {
+          ...props,
+          children: _jsx(_createMdxContent, {
+            ...props
+          })
+        }) : _createMdxContent(props);
       }
       return {
         default: MDXContent
@@ -66,12 +73,13 @@ describe('plugin with @mdx-js/mdx', () => {
     );
 
     expect(String(file)).toMatchInlineSnapshot(`
-      "/*@jsxRuntime automatic @jsxImportSource react*/
+      ""use strict";
       const {Fragment: _Fragment, jsx: _jsx, jsxs: _jsxs} = arguments[0];
       function _createMdxContent(props) {
-        const _components = Object.assign({
-          h1: "h1"
-        }, props.components);
+        const _components = {
+          h1: "h1",
+          ...props.components
+        };
         return _jsxs(_Fragment, {
           children: [_jsxs(_components.h1, {
             children: ["no id ", 5 * 3]
@@ -83,9 +91,12 @@ describe('plugin with @mdx-js/mdx', () => {
       }
       function MDXContent(props = {}) {
         const {wrapper: MDXLayout} = props.components || ({});
-        return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
-          children: _jsx(_createMdxContent, props)
-        })) : _createMdxContent(props);
+        return MDXLayout ? _jsx(MDXLayout, {
+          ...props,
+          children: _jsx(_createMdxContent, {
+            ...props
+          })
+        }) : _createMdxContent(props);
       }
       return {
         default: MDXContent

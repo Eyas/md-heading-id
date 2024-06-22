@@ -2,6 +2,9 @@ import {micromark} from 'micromark';
 
 import {micromarkHeadingId} from '../index.js';
 
+import {jest} from '@jest/globals';
+jest.useFakeTimers();
+
 /** @type {import('micromark-util-types').HtmlExtension} */
 const inspectSyntaxHtmlExtension = {
   enter: {

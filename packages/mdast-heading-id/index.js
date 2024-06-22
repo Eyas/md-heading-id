@@ -16,8 +16,19 @@ export function mdastHeadingId() {
     exit: {
       idString(token) {
         const idString = this.resume();
-        const node = /** @type {MdIdString} */ (this.exit(token));
-        node.value = idString;
+        const node =
+          this.stack.length >= 1
+            ? this.stack[this.stack.length - 1]
+            : undefined;
+        this.exit(token);
+        if (!node) {
+          return;
+        }
+        if (node.type !== 'idString') {
+          console.error(node);
+          return;
+        }
+        /** @type {MdIdString} */ node.value = idString;
       },
     },
   };
