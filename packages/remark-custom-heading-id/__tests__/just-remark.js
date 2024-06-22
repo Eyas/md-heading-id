@@ -3,6 +3,9 @@ import html from 'remark-rehype';
 import stringify from 'rehype-stringify';
 import {remarkHeadingId} from '../index.js';
 
+import {jest} from '@jest/globals';
+jest.useFakeTimers();
+
 describe('plugin with vanilla remark', function () {
   it('should parse well', function () {
     let contents = remark().use(remarkHeadingId).use(html).use(stringify)

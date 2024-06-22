@@ -10,4 +10,10 @@ declare module 'mdast' {
     interface StaticPhrasingContentMap {
         idString: MdIdString
     }
+    interface RootContentMap {
+        idString: MdIdString
+    }
+    interface PhrasingContentMap {
+        idString: MdIdString
+    }
 }

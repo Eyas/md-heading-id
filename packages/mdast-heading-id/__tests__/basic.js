@@ -2,6 +2,9 @@ import {fromMarkdown} from 'mdast-util-from-markdown';
 import {micromarkHeadingId} from 'micromark-heading-id';
 import {mdastHeadingId} from '../index.js';
 
+import {jest} from '@jest/globals';
+jest.useFakeTimers();
+
 describe('mdast plugin', () => {
   it('emits id node', () => {
     expect(

@@ -2,7 +2,7 @@
  * @typedef {import("micromark-util-types").Extension} Extension
  */
 
-import {codes} from 'micromark-util-symbol/codes.js';
+import {codes} from 'micromark-util-symbol';
 
 /**
  * @returns {Extension} Fully-configured micromark extension for adding hading IDs
@@ -55,7 +55,9 @@ export function micromarkHeadingId() {
                         null,
                         codes.backslash,
                         codes.leftCurlyBrace,
-                      ].includes(code)
+                      ].includes(
+                        // @ts-ignore
+                        code)
                     ) {
                       return nok(code);
                     }

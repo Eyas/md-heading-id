@@ -1,6 +1,6 @@
 {
   "name": "micromark-heading-id",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "micromark extension to support Markdown Extension for custom heading IDs",
   "license": "MIT",
   "keywords": [
@@ -27,19 +27,16 @@
     "types/index.d.ts"
   ],
   "dependencies": {
-    "micromark-util-symbol": "^1.0.1"
+    "micromark-util-symbol": "^2.0.0"
   },
   "devDependencies": {
-    "micromark": "^3.1.0",
-    "micromark-util-types": "^1.0.2"
+    "micromark": "^4.0.0",
+    "micromark-util-types": "^2.0.0"
   },
   "scripts": {
     "prepack": "npm run build",
-    "clean": "rimraf --glob __test__/**/*.d.ts *.d.ts",
+    "clean": "rimraf --glob __test__/**/*.d.ts index.d.ts",
     "build": "npm run clean && tsc",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
-  },
-  "jest": {
-    "testRegex": "/__tests__/.*\\.js$"
   }
 }
