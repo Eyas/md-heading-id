@@ -16,7 +16,10 @@ export function mdastHeadingId() {
     exit: {
       idString(token) {
         const idString = this.resume();
-        const node = this.stack.length >= 1 ? this.stack[this.stack.length - 1] : undefined;
+        const node =
+          this.stack.length >= 1
+            ? this.stack[this.stack.length - 1]
+            : undefined;
         this.exit(token);
         if (!node) {
           return;
@@ -25,7 +28,7 @@ export function mdastHeadingId() {
           console.error(node);
           return;
         }
-        (/** @type {MdIdString} */ node).value = idString;
+        /** @type {MdIdString} */ node.value = idString;
       },
     },
   };

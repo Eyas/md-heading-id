@@ -13,8 +13,12 @@ import {mdastHeadingId} from 'mdast-heading-id';
 export function remarkHeadingId() {
   const data = this.data();
 
-  (data.micromarkExtensions || (data.micromarkExtensions = [])).push(micromarkHeadingId());
-  (data.fromMarkdownExtensions || (data.fromMarkdownExtensions = [])).push(mdastHeadingId());
+  (data.micromarkExtensions || (data.micromarkExtensions = [])).push(
+    micromarkHeadingId()
+  );
+  (data.fromMarkdownExtensions || (data.fromMarkdownExtensions = [])).push(
+    mdastHeadingId()
+  );
 
   return function (node) {
     visit(node, 'idString', (node, _, parent) => {

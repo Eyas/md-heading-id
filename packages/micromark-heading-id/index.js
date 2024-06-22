@@ -57,7 +57,8 @@ export function micromarkHeadingId() {
                         codes.leftCurlyBrace,
                       ].includes(
                         // @ts-ignore
-                        code)
+                        code
+                      )
                     ) {
                       return nok(code);
                     }
